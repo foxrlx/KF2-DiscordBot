@@ -29,6 +29,11 @@ function MsgSpecHandler(PlayerReplicationInfo Sender, string Msg, name Type ) {
     local int health;
     local KFPawn kfp;
     local KFPlayerReplicationInfo kfpri;
+    
+    local KFGameInfo kfgi;
+
+    kfgi = KFGameInfo(WorldInfo.GameInfo);
+    `Log("Game Length " $ kfgi.GameLength);
 
     foreach WorldInfo.AllPawns(class'Pawn', p)
     {
@@ -45,7 +50,7 @@ function MsgSpecHandler(PlayerReplicationInfo Sender, string Msg, name Type ) {
     uid = class'OnlineSubsystem'.static.UniqueNetIdToString(Sender.UniqueId);
     
     serializedData = class'KF2DiscordUtil'.static.GetMessageJsonObject(uid, Sender.PlayerName, Msg, health, kfp, kfpri);
-    link.SendData(serializedData);
+    //link.SendData(serializedData);
 }
 
 function ConnectToDiscordAdapter() {

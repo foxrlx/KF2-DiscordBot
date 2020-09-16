@@ -41,17 +41,15 @@ function MsgSpecHandler(PlayerReplicationInfo Sender, string Msg, name Type ) {
     local KFPlayerReplicationInfo kfpri;
     
     local KFGameInfo kfgi;
-
-    `Log("teste " $ Spawn(class'KF2Util').getRandomString(10));
     
     //KFP.InvManager
     //!MyKFGRI.IsBossWave()
+
+    //some tests
     kfgi = KFGameInfo(WorldInfo.Game);
     `Log("Game Length " $ kfgi.GameLength);
     `Log("Zeds Killed " $ kfgi.GameConductor.TotalZedsKilled);
     `Log("Zeds Killed Wave " $ kfgi.GameConductor.CurrentWaveTotalZedsKilled);
-
-
     foreach WorldInfo.AllPawns(class'Pawn', p)
     {
         if (p.PlayerReplicationInfo != none && p.PlayerReplicationInfo.PlayerId == Sender.PlayerId)
@@ -80,7 +78,7 @@ function MsgSpecHandler(PlayerReplicationInfo Sender, string Msg, name Type ) {
     uid = class'OnlineSubsystem'.static.UniqueNetIdToString(Sender.UniqueId);
     
     serializedData = class'KF2DiscordUtil'.static.GetMessageJsonObject(uid, Sender.PlayerName, Msg, kfp, kfpri);
-    //link.SendData(serializedData);
+    link.SendData(serializedData);
 }
 
 function ConnectToDiscordAdapter() {

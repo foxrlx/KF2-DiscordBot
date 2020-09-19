@@ -31,7 +31,6 @@ function postBeginPlay() {
     ConnectToDiscordAdapter();
 }
 
-
 function MsgSpecHandler(PlayerReplicationInfo Sender, string Msg, name Type ) {
     local string serializedData;
     local string uid;
